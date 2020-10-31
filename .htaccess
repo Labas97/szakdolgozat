@@ -1,0 +1,24 @@
+DirectoryIndex index.php
+
+Options +FollowSymLinks -MultiViews
+# Turn mod_rewrite on
+RewriteEngine On
+RewriteBase /
+
+# "/home.php" -> "/"
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\shome\.php [NC]
+RewriteRule ^ / [R=301,L,NC]
+
+RewriteRule ^/$ home.php [L,NC]
+
+# "/contact.php" -> "/kapcsolat"
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\scontact\.php [NC]
+RewriteRule ^ /kapcsolat [R=301,L,NC]
+
+RewriteRule ^/kapcsolat$ contact.php [L,NC]
+
+# "/service.php" -> "/szolgaltatasok"
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\sservice\.php [NC]
+RewriteRule ^ /szolgaltatasok [R=301,L,NC]
+
+RewriteRule ^/szolgaltatasok$ service.php [L,NC]
