@@ -4,7 +4,7 @@
 
 	require_once '../controllers/server.php';
 
-	$HomeController->contact();
+	$ContactController->contact();
 
 ?>
 

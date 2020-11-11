@@ -66,9 +66,72 @@
     </div>
   </nav>
 
-        <?php
-            $ServiceController->index();
+<br/>
+<section class="page-section cta" id="sec1">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-9 mx-auto">
+                <div class="bg-faded rounded p-5" style="text-align: center">
+                    <p class="mb-0">A jellemzőkre való kereséshez pipálja be a megfelelő négyzeteket:</p><br/>
+                    <form action="" method="post">
+                        <div class="form-group">
+                            <button class="collapsible" type="button">Nem</button>
+                            <div class="content">
+                                <br/>
+                                <table style="width:100%">
+                                    <tr>
+                                        <th><label for="subject"><font color="#e6a756" face="Tahoma, Geneva, sans-serif"> Férfi</font></label></th>
+                                        <th><input type="checkbox" id="male" name="types[]" value="men"></th>
+                                        <th><label for="subject"><font color="#e6a756" face="Tahoma, Geneva, sans-serif"> Nő</font></label></th>
+                                        <th><input type="checkbox" id="female" name="types[]" value="female"></th>
+                                    </tr>
+                                </table>
+                                <br/>
+                            </div>
+                            <br/>
+                            <button class="collapsible" type="button">Érdeklődési kör</button>
+                            <div class="content">
+                                <br/>
+                                <table style="width:100%">
+                                    <tr>
+                                        <th><label for="subject"><font color="#e6a756" face="Tahoma, Geneva, sans-serif"> Elektronika</font></label></th>
+                                        <th><input type="checkbox" id="electronic" name="types[]" value="electronic"></th>
+                                        <th><label for="subject"><font color="#e6a756" face="Tahoma, Geneva, sans-serif"> Ruha</font></label></th>
+                                        <th><input type="checkbox" id="cloth" name="types[]" value="cloth"></th>
+                                    </tr>
+                                    <tr>
+                                        <th><label for="subject"><font color="#e6a756" face="Tahoma, Geneva, sans-serif"> IT</font></label></th>
+                                        <th><input type="checkbox" id="tech" name="types[]" value="tech"></th>
+                                        <th><label for="subject"><font color="#e6a756" face="Tahoma, Geneva, sans-serif"> Könyv</font></label></th>
+                                        <th><input type="checkbox" id="book" name="types[]" value="book"></th>
+                                    </tr>
+                                </table>
+                                <br/>
+                            </div>
+                            <br/>
+                            <button class="collapsible" type="button">Életkor</button>
+                            <div class="content">
+                                <br/>
+                                <table style="width:100%">
+                                    <tr>
+                                        <th><label for="subject"><font color="#e6a756" face="Tahoma, Geneva, sans-serif"> 20~ éves</font></label></th>
+                                        <th><input type="checkbox" id="20yrs" name="types[]" value="20yrs"></th>
+                                        <th><label for="subject"><font color="#e6a756" face="Tahoma, Geneva, sans-serif"> 30~ éves</font></label></th>
+                                        <th><input type="checkbox" id="30yrs" name="types[]" value="30yrs"></th>
+                                    </tr>
+                                </table>
+                                <br/>
+                            </div>
+                            <br/>
+                            <input class="btn btn-primary" type="submit" name="search" value="Keresés">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
+        <?php
             error_reporting(0);
 
             if(isset($_POST['search'])) {

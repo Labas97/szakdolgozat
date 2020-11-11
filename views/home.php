@@ -71,25 +71,32 @@
 <!-- Slideshow container -->
 <div class="slideshow-container" style="text-align:center">
 
-  <!-- Full-width images with number and caption text -->
-  <div class="mySlides fade">
-    <img src="img/products-01.jpg" alt="prod1" width="100%" height="500">
-  </div>
-
-  <div class="mySlides fade">
-    <img src="img/products-02.jpg" alt="prod2" width="100%" height="500">
-  </div>
-
-  <div class="mySlides fade">
-    <img src="img/products-03.jpg" alt="prod3" width="100%" height="500">
-  </div>
-
-<!-- The dots/circles -->
-<div style="text-align:center">
-  <span class="dot" onclick="currentSlide(1)"></span>
-  <span class="dot" onclick="currentSlide(2)"></span>
-  <span class="dot" onclick="currentSlide(3)"></span>
-</div>
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="img/products-01.jpg" width="100%" height="500" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="img/products-02.jpg" width="100%" height="500" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="img/products-03.jpg" width="100%" height="500" alt="...">
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
 
     <section class="page-section clearfix">
 <div class="container" style="margin-top:30px">

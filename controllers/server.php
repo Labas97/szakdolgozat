@@ -9,48 +9,7 @@
     define ('GUSER','444172fd88e0cb');
     define ('GPWD','d5021836c5c0d9');
 
-class HomeController {
-	
-	public function index() {
-		
-		global $conn;
-		
-		if($result = $conn->query("SELECT * FROM `service`")) {
-			
-			$table = $result->fetch_all(MYSQLI_ASSOC);
-			
-		echo '<div class="card-deck">
-  <div class="card">
-    <a href="services.php#sec1"><img class="card-img-top" src="' .$table[0]["image"]. '" width="400px" height="400px" alt="Card image cap"></a>
-    <div class="card-body">
-      <a href="services.php#sec1"><h5 class="card-title">' .$table[0]["name"]. '</h5></a>
-      <p class="card-text">' .$table[0]["description"]. '</p>
-      <p class="card-text"><small class="text-muted">' .$table[0]["date"]. '</small></p>
-    </div>
-  </div>
-  <div class="card">
-   <a href="services.php#sec2"> <img class="card-img-top" src="' .$table[1]["image"]. '" width="400px" height="400px" alt="Card image cap"></a>
-    <div class="card-body">
-      <a href="services.php#sec2"><h5 class="card-title">' .$table[1]["name"]. '</h5></a>
-      <p class="card-text">' .$table[1]["description"]. '</p>
-      <p class="card-text"><small class="text-muted">' .$table[1]["date"]. '</small></p>
-    </div>
-  </div>
-  <div class="card">
-    <a href="services.php#sec3"><img class="card-img-top" src="' .$table[2]["image"]. '" width="400px" height="400px" alt="Card image cap"></a>
-    <div class="card-body">
-      <a href="services.php#sec3"><h5 class="card-title">' .$table[2]["name"]. '</h5></a>
-      <p class="card-text">' .$table[2]["description"]. '</p>
-      <p class="card-text"><small class="text-muted">' .$table[2]["date"]. '</small></p>
-    </div>
-  </div>
-</div>';
-			
-		}
-		
-	}
-
-
+class ContactController {
 
 	public function contact() {
 		
@@ -84,15 +43,17 @@ class HomeController {
 			
 		}
 			
-		if(isset($_POST["name"]) && isset($_POST["email"]) && isset($_POST["subject"]) && isset($_POST["message"]) && !empty($_POST["name"]) && !empty($_POST["email"]) && !empty($_POST["subject"]) && !empty($_POST["message"]))	{
+		if(isset($_POST["name"]) && isset($_POST["email"]) && isset($_POST["subject"]) && isset($_POST["message"]) && 
+			!empty($_POST["name"]) && !empty($_POST["email"]) && !empty($_POST["subject"]) && !empty($_POST["message"]))	{
 			
-			$sql = "INSERT INTO email_message (sender_email,sender_name,receiver_email,receiver_name,subject,message) VALUES ('$Email','$Name','kuroosa97@gmail','LabasTibor','$Subject','$Message')";
+			$sql = "INSERT INTO email_message (sender_email,sender_name,receiver_email,receiver_name,subject,message)
+					VALUES ('$Email','$Name','kuroosa97@gmail','LabasTibor','$Subject','$Message')";
 		
 		}
 		
-		if(!mysqli_query($conn, $sql)) {
+		if((!empty($sql)) && (!mysqli_query($conn, $sql))) {
 			
-			echo NULL;
+			echo "Nem sikerült az adatok adatbázisba töltése!";
 			
 		} else {
 			
@@ -132,7 +93,8 @@ class HomeController {
 		
 		if(!$mail->send()){
 			
-			echo "<script type='text/javascript'>alert('Email küldés sikertelen!\nHiba: '".$mail->ErrorInfo.");</script>";
+			echo "<script type='text/javascript'>alert('Email küldés sikertelen!\nHiba: '
+			". $mail->ErrorInfo .");</script>";
 		
 		} else {
 			
@@ -235,81 +197,7 @@ class ServiceController {
         }
 		
 	}
-	
-	public function index() {
 
-        echo '<br/>
-<section class="page-section cta" id="sec1">
-    <div class="container">
-      <div class="row">
-        <div class="col-xl-9 mx-auto">
-          <div class="bg-faded rounded p-5" style="text-align: center">
-            <p class="mb-0">A jellemzőkre való kereséshez pipálja be a megfelelő négyzeteket:</p><br/>
-            <form action="" method="post">
-            <div class="form-group">
-            <button class="collapsible" type="button">Nem</button>
-            <div class="content">
-            <br/>
-            <table style="width:100%">
-  <tr>
-    <th><label for="subject"><font color="#e6a756" face="Tahoma, Geneva, sans-serif"> Férfi</font></label></th> 
-    <th><input type="checkbox" id="male" name="types[]" value="men"></th>
-    <th><label for="subject"><font color="#e6a756" face="Tahoma, Geneva, sans-serif"> Nő</font></label></th> 
-    <th><input type="checkbox" id="female" name="types[]" value="female"></th>
-    </tr>
-    </table>
-    <br/>
-    </div>
-    <br/>
-    <button class="collapsible" type="button">Érdeklődési kör</button>
-            <div class="content">
-            <br/>
-    <table style="width:100%">
-    <tr>
-    <th><label for="subject"><font color="#e6a756" face="Tahoma, Geneva, sans-serif"> Elektronika</font></label></th> 
-    <th><input type="checkbox" id="electronic" name="types[]" value="electronic"></th>
-    <th><label for="subject"><font color="#e6a756" face="Tahoma, Geneva, sans-serif"> Ruha</font></label></th> 
-    <th><input type="checkbox" id="cloth" name="types[]" value="cloth"></th>
-    </tr>
-    <tr>
-    <th><label for="subject"><font color="#e6a756" face="Tahoma, Geneva, sans-serif"> IT</font></label></th> 
-    <th><input type="checkbox" id="tech" name="types[]" value="tech"></th>
-    <th><label for="subject"><font color="#e6a756" face="Tahoma, Geneva, sans-serif"> Könyv</font></label></th> 
-    <th><input type="checkbox" id="book" name="types[]" value="book"></th>
-  </tr>
-  </table>
-  <br/>
-  </div>
-  <br/>
-  <button class="collapsible" type="button">Életkor</button>
-            <div class="content">
-            <br/>
-  <table style="width:100%">
-  <tr>
-    <th><label for="subject"><font color="#e6a756" face="Tahoma, Geneva, sans-serif"> 20~ éves</font></label></th> 
-    <th><input type="checkbox" id="20yrs" name="types[]" value="20yrs"></th>
-    <th><label for="subject"><font color="#e6a756" face="Tahoma, Geneva, sans-serif"> 30~ éves</font></label></th> 
-    <th><input type="checkbox" id="30yrs" name="types[]" value="30yrs"></th>
-  </tr>
-  </table>
-  <br/>
-  </div>	
-  <br/>
-				<input class="btn btn-primary" type="submit" name="search" value="Keresés">
-		</form>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-';
-
-        /*$types = array($_POST["types"]);
-
-        echo count($types);*/
-
-        }
-	
 }
 
 class AdminController {
@@ -385,12 +273,12 @@ class AdminController {
 }
 
 $AdminController = new AdminController();
-$HomeController = new HomeController();
+$ContactController = new ContactController();
 $ServiceController = new ServiceController();
 
 if(isset($_POST["name"]) && isset($_POST["email"]) && isset($_POST["subject"]) && isset($_POST["message"]) && !empty($_POST["name"]) && !empty($_POST["email"]) && !empty($_POST["subject"]) && !empty($_POST["message"])) {
 	
-	$HomeController->sendContactEmail();
+	$ContactController->sendContactEmail();
 	
 }
 	
