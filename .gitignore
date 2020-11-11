@@ -1,2 +1,6 @@
-vendor/
+vendor/components
+vendor/composer
+vendor/phpmailer
+vendor/twbs
+vendor/autoload.php
 node_modules/
