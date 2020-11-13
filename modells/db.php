@@ -69,4 +69,33 @@ if($conn->query($login_table) === FALSE) {
 
 }
 
+//Ha először futtatjuk a kódot akkor feltöltjük a test usert az admin táblába
+$file = fopen("../firstTime.txt", "r") or die("Nem lehet megnyitni a firstTime.txt-t");
+$firstTime = fread($file,filesize("../firstTime.txt"));
+fclose($file);
+
+if ($firstTime != 1) {
+
+    $insert = "INSERT INTO logins (email, password) VALUES ('admin@vanegyotletem.hu', '123456')";
+
+    if($conn->query($insert) === FALSE) {
+
+        echo "Hiba a teszt admin beszűrásakor: " . $conn->error;
+
+    } else {
+
+        echo NULL;
+
+    }
+
+    //Töröljük a txt-ből a 0-át
+    file_put_contents("../firstTime.txt", "");
+
+    //Beírjuk az 1-est
+    $file = fopen("../firstTime.txt", "w") or die("Nem lehet megnyitni a firstTime.txt-t");
+    fwrite($file,'1');
+    fclose($file);
+
+}
+
 ?>

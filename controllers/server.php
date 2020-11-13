@@ -206,69 +206,69 @@ class AdminController {
 
         global $conn;
 
-                error_reporting(0);
+        error_reporting(0);
 
-                $Name = $Image = $Description = $Price = $Url = $Types = '';
+        $Name = $Image = $Description = $Price = $Url = $Types = '';
 
-                $target_dir = "../views/files/";
-                $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+        $target_dir = "../views/files/";
+        $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 
-                if(isset($_POST["name"]) && !empty($_POST["name"])) {
+        if(isset($_POST["name"]) && !empty($_POST["name"])) {
 
-                    $Name = $_POST["name"];
+            $Name = $_POST["name"];
 
-                }
+        }
 
-                if(isset($_POST["description"]) && !empty($_POST["description"])) {
+        if(isset($_POST["description"]) && !empty($_POST["description"])) {
 
-                    $Description = $_POST["description"];
+            $Description = $_POST["description"];
 
-                }
+        }
 
-                if(isset($_POST["price"]) && !empty($_POST["price"])) {
+        if(isset($_POST["price"]) && !empty($_POST["price"])) {
 
-                    $Price = $_POST["price"];
+            $Price = $_POST["price"];
 
-                }
+        }
 
-                if(isset($_POST["url"]) && !empty($_POST["url"])) {
+        if(isset($_POST["url"]) && !empty($_POST["url"])) {
 
-                    $Url = $_POST["url"];
+            $Url = $_POST["url"];
 
-                }
+        }
 
-                if(isset($_POST["types"]) && !empty($_POST["types"])) {
+        if(isset($_POST["types"]) && !empty($_POST["types"])) {
 
-                    $Types = $_POST['types'];
+            $Types = $_POST['types'];
 
-                }
+        }
 
 
-                if(isset($_POST["name"]) && isset($_POST["description"]) && isset($_POST["price"]) && isset($_POST["url"]) && !empty($_POST["name"]) && !empty($_POST["description"]) && !empty($_POST["price"]) && !empty($_POST["url"]))	{
+        if(isset($_POST["name"]) && isset($_POST["description"]) && isset($_POST["price"]) && isset($_POST["url"]) && !empty($_POST["name"]) && !empty($_POST["description"]) && !empty($_POST["price"]) && !empty($_POST["url"]))	{
 
-                    $Date = date("Y-m-d H:i:s");
+            $Date = date("Y-m-d H:i:s");
 
-                    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+            if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
 
-                        $Image = htmlspecialchars( basename( $_FILES["fileToUpload"]["name"]));
-
-                    }
-
-                    $sql = "INSERT INTO service (image,price,name,description,date,types,url) VALUES ('$Image','$Price','$Name','$Description','$Date','$Types','$Url')";
-
-                }
-
-                if(!mysqli_query($conn, $sql)) {
-
-                    echo NULL;
-
-                } else {
-
-                    echo NULL;
-
-                }
+                $Image = htmlspecialchars( basename( $_FILES["fileToUpload"]["name"]));
 
             }
+
+            $sql = "INSERT INTO service (image,price,name,description,date,types,url) VALUES ('$Image','$Price','$Name','$Description','$Date','$Types','$Url')";
+
+        }
+
+        if(!mysqli_query($conn, $sql)) {
+
+            echo NULL;
+
+        } else {
+
+            echo NULL;
+
+        }
+
+    }
 
 }
 
